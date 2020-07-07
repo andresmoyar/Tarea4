@@ -60,10 +60,14 @@ plt.plot(senal[0:20*P])
 plt.show()
 
 ```
-La señal modulada obtenidad es la siguiente 
+La señal modulada obtenidad,con su período en x, es la siguiente 
 
 <img src="https://github.com/andresmoyar/Tarea4/blob/master/BPSK.png">
 
 La señal portadora es la siguiente
 
-<img src="https://github.com/andresmoyar/Tarea4/blob/master/BPSK.png">
+<img src="https://github.com/andresmoyar/Tarea4/blob/master/Onda.png">
+
+## Parte 2-Calcular la potencia promedio de la señal modulada generada.
+Para calcular la potencia promedio de la señal modulada se debe utilizar la fórmula para potencia instántanea y potencia promedio, son las siguientes:
+<img src="https://render.githubusercontent.com/render/math?math=P(T)=int_{-T}^{T}x^2(t)ae^{-(x-\mu)^{2}/2\sigma^{2}}">
