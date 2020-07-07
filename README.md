@@ -70,4 +70,74 @@ La señal portadora es la siguiente
 
 ## Parte 2-Calcular la potencia promedio de la señal modulada generada.
 Para calcular la potencia promedio de la señal modulada se debe utilizar la fórmula para potencia instántanea y potencia promedio, son las siguientes:
-<img src="https://render.githubusercontent.com/render/math?math=P(T)=\int_{-T}^{T}x^2(t)ae^{-(x-\mu)^{2}/2\sigma^{2}}">
+<img src="https://render.githubusercontent.com/render/math?math=P(T)=(1/2T)*\int_{-T}^{T}x^2(t)dt=A{x^2(t)}">
+<img src="https://render.githubusercontent.com/render/math?math=P(T)=(1/2T)*\int_{-T}^{T}E[X^2(t)]dt=A{E[X^2(t)]}">
+Para obtener el resultado para este caso se hace el siguiente código:
+```python
+# Potencia instantánea
+pin = senal**2
+
+# Potencia promedio (W)
+potpro = integrate.trapz(pin, t) / (N * T)
+print("La potencia promedio:\n",potpro)
+```
+La potencias promedio obtenida es 0.24500049000096372 W
+
+## Parte 3 - Simular un canal ruidoso del tipo AWGN
+Para simular el canal ruidoso, se debe obtener la relación señal a ruido 
+<img src="https://render.githubusercontent.com/render/math?math=SNR_{dB}=10log_{10}(Ps/Pn)">
+Se debe obtener la potencia del ruido y de la señal. Esta SNR debe estar en el rango de -2 a 3 dB.
+```python
+
+# Relación señal-a-ruido deseada
+SNR = range(-2,3)
+Rxfull=[] # Guarda el ruido RX de cada SNR en una lista para usarlo posteriormente en la parte 5.
+for i in SNR: 
+  pn=0
+  # Potencia del ruido para SNR y potencia de la señal dadas
+  pn =pn+potpro / (10**(i / 10))
+  # Desviación estándar del ruido
+  sigma = np.sqrt(pn)
+  # Crear ruido (pn = sigma^2)
+  ruido = np.random.normal(0, sigma, senal.shape)
+  # Simular "el canal": señal recibida
+  Rx = senal + ruido
+  Rxfull.append(Rx) 
+  # Visualización de los primeros bits recibidos
+  plt.figure(2)
+  plt.plot(Rx[0:20*P])
+for j in range(len(Rxfull)):   
+    Rx =Rxfull[j]
+    plt.plot(Rx[0:20*P])# Visualización  del ruido en el rango de SNR de los primeros bits recibidos
+    print("\nCon valores de  SNR={}dB.Provoca el ruido de por=\n{}\n".format(SNR[j],Rxfull[j]))
+```
+Cada uno de estos se almacena para obtener la señal con ruido para cada uno. La señal con ruido es la siguiente:
+
+<img src="https://github.com/andresmoyar/Tarea4/blob/master/snr.png">
+
+
+## Parte 4 - Graficar la densidad espectral de potencia de la señal con el método de Welch (SciPy), antes y después del canal ruidoso.
+ Aquí se debe graficar espectral de potencia de la señal antes y después cuando se modela con el canal ruidoso.
+ Para ello se hace el siguiente código de Python. Aplicando el método de Welch para obtener la gráfica usando la frecuencia y la densidad espectral.
+ ```python
+ fw, PSD = signal.welch(senal, fs, nperseg=1024)
+plt.figure()
+plt.semilogy(fw, PSD)
+plt.xlabel('Frecuencia [Hz]')
+plt.ylabel('Densidad espectral de potencia [V^2/Hz]')
+plt.show()
+# Después del canal ruidoso
+fw, PSD = signal.welch(Rx, fs, nperseg=1024)
+plt.figure()
+plt.semilogy(fw, PSD)
+plt.xlabel('Frecuencia  [Hz]')
+plt.ylabel('Densidad espectral de potencia [V^2/Hz]')
+plt.show()
+```
+La gráfica sin ruido es la siguiente 
+
+<img src="https://github.com/andresmoyar/Tarea4/blob/master/DensidadvsFrecuencia.png">
+La gráfica con ruido es la siguiente 
+
+<img src="https://github.com/andresmoyar/Tarea4/blob/master/densidadvsfrecuenciadespues.png">
+ 
