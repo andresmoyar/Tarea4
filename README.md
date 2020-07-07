@@ -147,6 +147,7 @@ Para la demodulación y decodificación se usa la siguiente fórmula:
 
 
 <img src="https://render.githubusercontent.com/render/math?math=g(t)h(t)=\int_{0^{T}g(t)h(t)dt">
+
  ```python
 # Pseudo-energía de la onda original (esta es suma, no integral)
 Es = np.sum(sin**2)
@@ -173,6 +174,8 @@ for i in range(len(Rxfull)): # Recorrer la lista obtenida del ruido Rx de cada S
     print('El ruid de SNR= {}dB ,la senal decodificada tiene  errores de {}en {} bits con la siguiente tasa de error {}.'.format(SNR[i],err, N,BER))
 
 ```
+
 ## Parte 6 - Graficar BER versus SNR.
 En esta parte se debe graficar los arreglos de SNR y de BER para mostrar la comparación según el decibel y la tasa de errores. Al ser todo derivado de algo aleatorio(ruido) cada vez que se corre el programa puede dar distinto, pero cuando se probo el resultado es el siguiente:
+
 <img src="https://github.com/andresmoyar/Tarea4/blob/master/BERvsSNR.png">
