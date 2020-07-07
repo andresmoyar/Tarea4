@@ -70,4 +70,4 @@ La señal portadora es la siguiente
 
 ## Parte 2-Calcular la potencia promedio de la señal modulada generada.
 Para calcular la potencia promedio de la señal modulada se debe utilizar la fórmula para potencia instántanea y potencia promedio, son las siguientes:
-<img src="https://render.githubusercontent.com/render/math?math=P(T)=int_{-T}^{T}x^2(t)ae^{-(x-\mu)^{2}/2\sigma^{2}}">
+<img src="https://render.githubusercontent.com/render/math?math=P(T)=\int_{-T}^{T}x^2(t)ae^{-(x-\mu)^{2}/2\sigma^{2}}">
