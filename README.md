@@ -140,13 +140,14 @@ La gráfica sin ruido es la siguiente
 La gráfica con ruido es la siguiente 
 
 <img src="https://github.com/andresmoyar/Tarea4/blob/master/densidadvsfrecuenciadespues.png">
+
 ## Parte 5 - Demodular y decodificar la señal y hacer un conteo de la tasa de error de bits (BER, bit error rate) para cada nivel SNR.
 En el siguiente código se muestra como demodulary decodificar la señal. Además el BER para cada SNR que se encontró en las parte 3. Primero se debe hacer la energía, luego se hace un arreglo para almacenar la tasa de errores. Para la parte de decodificar se debe recorrer la lista de ruido anterior y para ella se usa la energía en el intervalo de operación después se hace los casos de que cada vez que la energía de esto es mayor a la pseudo-energía, se hace almacena un 1 y si esta no se cumple(es ortogonal) se almacena un 0, luego el error se muestra restando del original estos bits almacenados. El conteo BER se hace promediando por el total del número de bits. Luego se almacena los BER en un arreglo para mostrar el caso para cada SNR. 
 
 Para la demodulación y decodificación se usa la siguiente fórmula:
 
 
-<img src="https://render.githubusercontent.com/render/math?math=g(t)h(t)=\int_{0^{T}g(t)h(t)dt">
+<img src="https://render.githubusercontent.com/render/math?math=g(t)h(t)=\int_{0}^{T}g(t)h(t)dt">
 
  ```python
 # Pseudo-energía de la onda original (esta es suma, no integral)
