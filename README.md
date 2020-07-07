@@ -140,4 +140,39 @@ La gráfica sin ruido es la siguiente
 La gráfica con ruido es la siguiente 
 
 <img src="https://github.com/andresmoyar/Tarea4/blob/master/densidadvsfrecuenciadespues.png">
- 
+## Parte 5 - Demodular y decodificar la señal y hacer un conteo de la tasa de error de bits (BER, bit error rate) para cada nivel SNR.
+En el siguiente código se muestra como demodulary decodificar la señal. Además el BER para cada SNR que se encontró en las parte 3. Primero se debe hacer la energía, luego se hace un arreglo para almacenar la tasa de errores. Para la parte de decodificar se debe recorrer la lista de ruido anterior y para ella se usa la energía en el intervalo de operación después se hace los casos de que cada vez que la energía de esto es mayor a la pseudo-energía, se hace almacena un 1 y si esta no se cumple(es ortogonal) se almacena un 0, luego el error se muestra restando del original estos bits almacenados. El conteo BER se hace promediando por el total del número de bits. Luego se almacena los BER en un arreglo para mostrar el caso para cada SNR. 
+
+Para la demodulación y decodificación se usa la siguiente fórmula:
+
+
+<img src="https://render.githubusercontent.com/render/math?math=g(t)h(t)=\int_{0^{T}g(t)h(t)dt">
+ ```python
+# Pseudo-energía de la onda original (esta es suma, no integral)
+Es = np.sum(sin**2)
+
+# Inicialización del vector de bits recibidos
+bit=np.shape(arr)
+bitsRx = np.zeros(bit)
+#total de ber
+BERfull=[] 
+# Decodificación de la señal por detección de energía
+for i in range(len(Rxfull)): # Recorrer la lista obtenida del ruido Rx de cada SNR de la parte 3
+    Rx=Rxfull[i]
+    for k,b in enumerate(arr):
+      Ep = np.sum(Rx[k*P:(k+1)*P] * sin)
+      
+      if Ep > Es/2:
+        bitsRx[k] = 1
+      else:
+        bitsRx[k] = 0
+
+    err = np.sum(np.abs(arr - bitsRx))
+    BER = err/N
+    BERfull.append(BER)
+    print('El ruid de SNR= {}dB ,la senal decodificada tiene  errores de {}en {} bits con la siguiente tasa de error {}.'.format(SNR[i],err, N,BER))
+
+```
+## Parte 6 - Graficar BER versus SNR.
+En esta parte se debe graficar los arreglos de SNR y de BER para mostrar la comparación según el decibel y la tasa de errores. Al ser todo derivado de algo aleatorio(ruido) cada vez que se corre el programa puede dar distinto, pero cuando se probo el resultado es el siguiente:
+<img src="https://github.com/andresmoyar/Tarea4/blob/master/BERvsSNR.png">
