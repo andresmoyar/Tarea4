@@ -108,7 +108,7 @@ bitsRx = np.zeros(bit)
 #total de ber
 BERfull=[] 
 # Decodificación de la señal por detección de energía
-for i in range(len(Rxfull)): # Recorrer la lista obtenida del ruido RX de cada SNR del punto 3
+for i in range(len(Rxfull)): # Recorrer la lista obtenida del ruido Rx de cada SNR de la parte 3
     Rx=Rxfull[i]
     for k,b in enumerate(arr):
       Ep = np.sum(Rx[k*P:(k+1)*P] * sin)
