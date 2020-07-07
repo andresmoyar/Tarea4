@@ -176,6 +176,14 @@ for i in range(len(Rxfull)): # Recorrer la lista obtenida del ruido Rx de cada S
 
 ```
 
+Esto da lo siguiente para cada SNR:
+
+El ruido de SNR= -2dB ,la senal decodificada tiene  errores de 235.0en 10000 bits con la siguiente tasa de error 0.0235.
+El ruido de SNR= -1dB ,la senal decodificada tiene  errores de 163.0en 10000 bits con la siguiente tasa de error 0.0163.
+El ruido de SNR= 0dB ,la senal decodificada tiene  errores de 93.0en 10000 bits con la siguiente tasa de error 0.0093.
+El ruido de SNR= 1dB ,la senal decodificada tiene  errores de 34.0en 10000 bits con la siguiente tasa de error 0.0034.
+El ruido de SNR= 2dB ,la senal decodificada tiene  errores de 22.0en 10000 bits con la siguiente tasa de error 0.0022.
+
 ## Parte 6 - Graficar BER versus SNR.
 En esta parte se debe graficar los arreglos de SNR y de BER para mostrar la comparación según el decibel y la tasa de errores. Al ser todo derivado de algo aleatorio(ruido) cada vez que se corre el programa puede dar distinto, pero cuando se probo el resultado es el siguiente:
 
