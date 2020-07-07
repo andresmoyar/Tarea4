@@ -14,7 +14,7 @@ from mpl_toolkits import mplot3d
 from scipy.optimize import curve_fit
 ```
 ## Parte 1-Crear un esquema de modulación BPSK para los bits presentados. Esto implica asignar una forma de onda sinusoidal normalizada (amplitud unitaria) para cada bit y luego una concatenación de todas estas formas de onda.
-La modulacion BPSK(Bits Phase Shift Keying) lo que hace es el método de desplazamiento de dos símbolos, tiene un bit de información cada uno. 
+La modulacion BPSK(Bits Phase Shift Keying) lo que hace es el método de desplazamiento de dos símbolos, tiene un bit de información cada uno. Tiene inmunidad la mayor inmunidad al ruido respecto al resto de la familia de phase shift ya que posee una diferencia máxima. Su velocidad de modulación es la más baja de este tipo. Para crear la señal portadora se hace la señal senosoidal de amplitud unitaria y se le agrega una frecuencia de 5000Hz para 10 mil bits con 50 puntos para su muestreo. La onda modulada debería cambiar de dirección cada vez que hay un 1 en los datos y con 0 no debería reaccionar.  
 ### Código usado para obtener los parámetros de la mejor curva de ajuste
 ```python
 arr = []
@@ -60,3 +60,5 @@ plt.plot(senal[0:20*P])
 plt.show()
 
 ```
+La señal obtenidad es la siguiente 
+<img src="https://github.com/andresmoyar/Tarea4/blob/master/BPSK.png">
