@@ -60,5 +60,10 @@ plt.plot(senal[0:20*P])
 plt.show()
 
 ```
-La señal obtenidad es la siguiente 
+La señal modulada obtenidad es la siguiente 
+
+<img src="https://github.com/andresmoyar/Tarea4/blob/master/BPSK.png">
+
+La señal portadora es la siguiente
+
 <img src="https://github.com/andresmoyar/Tarea4/blob/master/BPSK.png">
